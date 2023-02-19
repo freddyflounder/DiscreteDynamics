@@ -1,13 +1,13 @@
 from math import floor
 
 def itinerary(num, den, tuple):
-  itin=[]
+Queue=[]
   num=num%den
   i=num
   for m in range(tuple):
     if(i/den>=m/tuple):
       g=m
-  itin.append(g)
+  Queue.append(g)
   i=i*tuple
   while i!=0:
     i=i%den
@@ -17,21 +17,22 @@ def itinerary(num, den, tuple):
       for m in range(tuple):
         if(i/den>=m/tuple):
           g=m
-      itin.append(g)
+      Queue.append(g)
       i=i*tuple
-  for m in range(len(itin)):
-    print(itin[m], end="")
+  for m in range(len(Queue)):
+    c = Queue.pop()
+    print(c, end="")
 
 def naryexpand(num, d):
-  nary=[]
+  stack=[]
   if num==0:
     print("0",end="")
   else:
     while num!=0:
-      nary.append(num%d)
+      stack.append(num%d)
       num=floor(num/d)
     for i in range(1,len(nary)+1):
-      print(nary[-i], end="")
+      print(stack.pop(-1), end="")
   
 
 k=0
