@@ -1,27 +1,20 @@
 from math import floor
 
-def itinerary(num, den, tuple):
-Queue=[]
-  num=num%den
-  i=num
+itin=[]
+
+def itinerary(n, num, den, tuple):
+  n=n%den
+  i=n
   for m in range(tuple):
     if(i/den>=m/tuple):
       g=m
-  Queue.append(g)
+  itin.append(g)
   i=i*tuple
-  while i!=0:
-    i=i%den
-    if (i==num):
-      i=0
-    else:
-      for m in range(tuple):
-        if(i/den>=m/tuple):
-          g=m
-      Queue.append(g)
-      i=i*tuple
-  for m in range(len(Queue)):
-    c = Queue.pop()
-    print(c, end="")
+  if i==num:
+    for m in range(len(itin)):
+      print(itin[m], end="")
+  else:
+    itinerary(i, num, den, tuple)
 
 def naryexpand(num, d):
   stack=[]
